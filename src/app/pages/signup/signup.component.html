@@ -15,7 +15,7 @@
                   formControlName="emailFormControl"
                   matInput
                 />
-                <mat-error *ngIf="signUpForm.get('emailFormControl')?.valid">
+                <mat-error *ngIf="!signUpForm.get('emailFormControl')?.valid">
                   Please enter a valid email address
                 </mat-error>
               </mat-form-field>
@@ -30,7 +30,9 @@
                   formControlName="userNameFormControl"
                   matInput
                 />
-                <mat-error *ngIf="signUpForm.get('userNameFormControl')?.valid">
+                <mat-error
+                  *ngIf="!signUpForm.get('userNameFormControl')?.valid"
+                >
                   Please enter a valid username (at least 3 character long)
                 </mat-error>
               </mat-form-field>
@@ -46,7 +48,7 @@
                   matInput
                 />
                 <mat-error
-                  *ngIf="signUpForm.get('firstNameFormControl')?.valid"
+                  *ngIf="!signUpForm.get('firstNameFormControl')?.valid"
                 >
                   Please enter a valid first name (at least 3 character long)
                 </mat-error>
@@ -78,7 +80,7 @@
                 <mat-error
                   *ngIf="!signUpForm.get('passwordFormControl')?.valid"
                 >
-                  Please enter a valid password (at least 3 character long)
+                  Please enter a valid password (at least 6 character long)
                 </mat-error>
               </mat-form-field>
             </td>

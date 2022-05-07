@@ -1,0 +1,14 @@
+<mat-toolbar
+  ><span>The Rolling Road</span><span class="spacer"></span
+  ><span
+    class="userName-label noselect"
+    title="user edit is not implemented"
+    *ngIf="userService.user$ | async as user"
+    >{{ user.userName }}</span
+  ><app-icon
+    class="logout-icon"
+    *ngIf="authService.isLoggedIn"
+    (click)="logout()"
+    >logout</app-icon
+  ></mat-toolbar
+>

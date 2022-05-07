@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,28 @@ export class LoginComponent implements OnInit {
     ]),
     passwordFormControl: new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
     ]),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.isLoggedIn) {
+      this.authService.logout();
+    }
+  }
 
   login(): void {
-    console.log(
-      this.loginForm.value.emailFormControl,
-      this.loginForm.value.passwordFormControl
-    );
+    this.authService
+      .login(
+        this.loginForm.value.emailFormControl,
+        this.loginForm.value.passwordFormControl
+      )
+      .then(() => {
+        this.loginForm.reset();
+        this.router.navigateByUrl('home');
+      });
   }
 
   navigateToSignUp() {

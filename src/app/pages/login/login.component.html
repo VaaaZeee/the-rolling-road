@@ -18,9 +18,6 @@
                 <mat-error *ngIf="loginForm.get('emailFormControl')?.valid">
                   Please enter a valid email address
                 </mat-error>
-                <mat-error *ngIf="loginForm.get('emailFormControl')?.valid">
-                  Email is <strong>required</strong>
-                </mat-error>
               </mat-form-field>
             </td>
           </tr>
@@ -34,10 +31,7 @@
                   matInput
                 />
                 <mat-error *ngIf="loginForm.get('passwordFormControl')?.valid">
-                  Please enter a valid password
-                </mat-error>
-                <mat-error *ngIf="loginForm.get('passwordFormControl')?.valid">
-                  Passowrd is <strong>required</strong>
+                  Please enter a valid password, (at least 3 character long)
                 </mat-error>
               </mat-form-field>
             </td>

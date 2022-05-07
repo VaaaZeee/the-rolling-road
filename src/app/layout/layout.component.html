@@ -1,9 +1,2 @@
-<mat-toolbar><span>The Rolling Road</span></mat-toolbar>
-<mat-drawer-container class="drawer-container">
-  <mat-drawer mode="side" [opened]="router.url === '/home'"
-    >Drawer content</mat-drawer
-  >
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<app-toolbar></app-toolbar>
+<app-drawer><ng-content></ng-content></app-drawer>
