@@ -1,3 +1,107 @@
-<p>
-  signup works!
-</p>
+<div class="container">
+  <div class="signUp-panel">
+    <div class="title-container">
+      <div class="title">Sign Up</div>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="signUpForm" class="signUp-form" (ngSubmit)="signUp()">
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td colspan="2">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  type="text"
+                  formControlName="emailFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="signUpForm.get('emailFormControl')?.valid">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input
+                  type="text"
+                  formControlName="userNameFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="signUpForm.get('userNameFormControl')?.valid">
+                  Please enter a valid username (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input
+                  type="text"
+                  formControlName="firstNameFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="signUpForm.get('firstNameFormControl')?.valid"
+                >
+                  Please enter a valid first name (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input
+                  type="text"
+                  formControlName="lastNameFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="signUpForm.get('lastNameFormControl')?.valid">
+                  Please enter a valid last name (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  formControlName="passwordFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="!signUpForm.get('passwordFormControl')?.valid"
+                >
+                  Please enter a valid password (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <div class="button-container">
+          <button
+            [disabled]="!signUpForm.valid"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Sign Up
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="navigateToLogin()"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,66 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="login-panel">
+    <div class="title-container">
+      <div class="title">Login</div>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  formControlName="emailFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="loginForm.get('emailFormControl')?.valid">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('emailFormControl')?.valid">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  formControlName="passwordFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="loginForm.get('passwordFormControl')?.valid">
+                  Please enter a valid password
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('passwordFormControl')?.valid">
+                  Passowrd is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <div class="button-container">
+          <button
+            [disabled]="!loginForm.valid"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Login
+          </button>
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="navigateToSignUp()"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+@import "colors";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey1;
+  width: 100%;
+  height: 100%;
+}
+
+.login-panel {
+  background-color: white;
+  width: 35rem;
+  height: 35rem;
+
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primaryColor;
+    width: 100%;
+    height: 6rem;
+    margin-bottom: 1.39375em;
+
+    .title {
+      color: white;
+      font-size: 3rem;
+      font-weight: bolder;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+
+    .login-form {
+      width: 75%;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 50%;
+
+  button {
+    width: 100%;
+    height: 3rem;
+    margin: 0.25em 0 1.39375em 0;
+  }
+}
+
+.mat-raised-button.mat-primary {
+  background-color: $primaryColor;
+  color: #fff;
+
+  &:disabled {
+    background-color: $disavbledButtonColor;
+  }
+}
+
+.mat-stroked-button.mat-primary {
+  color: $primaryColor;
+  border-color: $primaryColor;
+}
