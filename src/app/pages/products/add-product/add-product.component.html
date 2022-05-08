@@ -77,11 +77,19 @@
           </tr>
           <tr>
             <td>
-              <ngx-awesome-uploader
-                [adapter]="adapter"
-                [fileMaxCount]="1"
-                (fileAdded)="imageAdded($event)"
-              ></ngx-awesome-uploader>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Image Url</mat-label>
+                <input
+                  type="text"
+                  formControlName="imageUrlFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('imageUrlFormControl')?.valid"
+                >
+                  Please enter a valid url
+                </mat-error>
+              </mat-form-field>
             </td>
           </tr>
           <tr>
@@ -182,7 +190,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Language</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="languageFormControl"
                   matInput
                 />
@@ -199,7 +207,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Designers</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="designersFormControl"
                   matInput
                 />
@@ -216,7 +224,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Categories</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="categoriesFormControl"
                   matInput
                 />
@@ -233,7 +241,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Artists</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="artistsFormControl"
                   matInput
                 />
@@ -250,7 +258,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Game type</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="typeOfGameFormControl"
                   matInput
                 />
@@ -267,7 +275,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Short Description</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="shortDescriptionFormControl"
                   matInput
                 />
@@ -287,7 +295,7 @@
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Long Description</mat-label>
                 <input
-                  type="number"
+                  type="text"
                   formControlName="longDescriptionFormControl"
                   matInput
                 />
@@ -303,12 +311,7 @@
           </tr>
         </table>
         <div class="button-container">
-          <button
-            [disabled]="!addProductForm.valid || image === undefined"
-            type="submit"
-            mat-raised-button
-            color="primary"
-          >
+          <button type="submit" mat-raised-button color="primary">
             Add product
           </button>
         </div>

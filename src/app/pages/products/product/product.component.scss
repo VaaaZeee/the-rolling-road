@@ -2,20 +2,34 @@
 
 .card {
   cursor: pointer;
+  height: 93.5%;
   &:hover {
     box-shadow: 0px 5px 30px 1px rgba(0, 0, 0, 0.5);
   }
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  height: 5.2rem;
 }
 
 .add {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 93.5%;
 }
 
 .add-icon ::ng-deep .material-icons {
   cursor: pointer;
   font-size: 15rem;
   color: $grey2;
+}
+
+.add-to-cart {
+  width: 100%;
+}
+
+.price {
+  font-size: 2rem;
 }

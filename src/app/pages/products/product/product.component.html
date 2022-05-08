@@ -3,13 +3,20 @@
     <mat-card-header>
       <mat-card-title>{{ product.name }}</mat-card-title>
       <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <app-icon>more_vert</app-icon>
+      </button>
     </mat-card-header>
     <img mat-card-image [src]="product.imageUrl" alt="Photo of the product" />
     <mat-card-content>
-      <p>{{ product.price + " €" }}</p>
+      <p class="price">{{ product.price + " €" }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>AD TO CART</button>
+      <button class="add-to-cart" mat-button>ADD TO CART</button>
     </mat-card-actions>
   </mat-card>
 </ng-container>
@@ -21,3 +28,14 @@
     </mat-card-content>
   </mat-card>
 </ng-template>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="openEditDialog()">
+    <app-icon>edit</app-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item (click)="openDeleteDialog()">
+    <app-icon>delete</app-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>

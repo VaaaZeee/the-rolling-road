@@ -9,6 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { IconModule } from 'src/app/shared/icon/icon.module';
 import { AddProductModule } from './add-product/add-product.module';
+import { MatMenuModule } from '@angular/material/menu';
+import { EditProductModule } from './edit-product/edit-product.module';
+import { ConfirmDialogModule } from 'src/app/shared/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   imports: [
@@ -19,7 +22,10 @@ import { AddProductModule } from './add-product/add-product.module';
     MatDialogModule,
     IconModule,
     AddProductModule,
+    MatMenuModule,
+    EditProductModule,
+    ConfirmDialogModule,
   ],
-  declarations: [ProductsComponent, ProductComponent, EditProductComponent],
+  declarations: [ProductsComponent, ProductComponent],
 })
 export class ProductsModule {}

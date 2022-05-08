@@ -11,8 +11,6 @@ import { BoardGame } from 'src/app/core/models/product.models';
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
-  public adapter: CustomFilePickerAdapter;
-  public image: File | undefined;
   addProductForm = new FormGroup({
     nameFormControl: new FormControl('', [
       Validators.required,
@@ -65,17 +63,13 @@ export class AddProductComponent implements OnInit {
     designersFormControl: new FormControl('', [Validators.required]),
     artistsFormControl: new FormControl('', [Validators.required]),
     typeOfGameFormControl: new FormControl('', [Validators.required]),
+    imageUrlFormControl: new FormControl('', [Validators.required]),
     priceFormControl: new FormControl(0, [
       Validators.required,
       Validators.min(0),
     ]),
   });
-  constructor(
-    private http: HttpClient,
-    public dialogRef: MatDialogRef<AddProductComponent>
-  ) {
-    this.adapter = new CustomFilePickerAdapter(this.http);
-  }
+  constructor(public dialogRef: MatDialogRef<AddProductComponent>) {}
 
   ngOnInit() {}
 
@@ -91,7 +85,7 @@ export class AddProductComponent implements OnInit {
       playingTimeLower: this.addProductForm.value.playingTimeLowerFormControl,
       playingTimeUpper: this.addProductForm.value.playingTimeUpperFormControl,
       categories: this.addProductForm.value.categoriesFormControl,
-      imageUrl: '',
+      imageUrl: this.addProductForm.value.imageUrlFormControl,
       languages: this.addProductForm.value.languageFormControl,
       shortDescription: this.addProductForm.value.shortDescriptionFormControl,
       longDescription: this.addProductForm.value.longDescriptionFormControl,
@@ -103,14 +97,10 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct(): void {
-    if (this.addProductForm.valid && this.image) {
+    if (this.addProductForm.valid) {
       const product: BoardGame = this.fetchProduct();
-      console.log(product);
+      this.dialogRef.close(product);
     }
-  }
-
-  imageAdded(file: any): void {
-    this.image = file;
   }
 
   close(): void {
