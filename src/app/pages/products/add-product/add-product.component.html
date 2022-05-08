@@ -1,0 +1,326 @@
+<div class="container">
+  <div class="login-panel">
+    <div class="title-container">
+      <div class="title">Add new product</div>
+      <div class="close-icon" (click)="close()"><app-icon>close</app-icon></div>
+    </div>
+    <div class="form-container">
+      <form
+        [formGroup]="addProductForm"
+        class="login-form"
+        (ngSubmit)="addProduct()"
+      >
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input type="text" formControlName="nameFormControl" matInput />
+                <mat-error *ngIf="addProductForm.get('nameFormControl')?.valid">
+                  Please enter a valid name (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Brand</mat-label>
+                <input
+                  type="text"
+                  formControlName="brandFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('brandFormControl')?.valid"
+                >
+                  Please enter a valid brand (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>In stock</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="inStockFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('inStockFormControl')?.valid"
+                >
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Price</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="priceFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('priceFormControl')?.valid"
+                >
+                  Please enter a valid price
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Picture</mat-label>
+                <input
+                  type="text"
+                  formControlName="imageFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('imageFormControl')?.valid"
+                >
+                  Please enter a valid price
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Minimum player number</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="minPlayerFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('minPlayerFormControl')?.valid"
+                >
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Maximum player number</mat-label>
+                <input
+                  type="number"
+                  min="1"
+                  formControlName="maxPlayerFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('maxPlayerFormControl')?.valid"
+                >
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Age</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="ageFormControl"
+                  matInput
+                />
+                <mat-error *ngIf="addProductForm.get('ageFormControl')?.valid">
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Minimum playing time</mat-label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="playingTimeLowerFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="
+                    addProductForm.get('playingTimeLowerFormControl')?.valid
+                  "
+                >
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Maximum playingtime</mat-label>
+                <input
+                  type="number"
+                  min="1"
+                  formControlName="playingTimeUpperFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="
+                    addProductForm.get('playingTimeUpperFormControl')?.valid
+                  "
+                >
+                  Please enter a valid number
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Language</mat-label>
+                <input
+                  type="number"
+                  formControlName="languageFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('languageFormControl')?.valid"
+                >
+                  Please enter a valid language (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Designers</mat-label>
+                <input
+                  type="number"
+                  formControlName="designersFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('designersFormControl')?.valid"
+                >
+                  Please enter a valid Designer
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Categories</mat-label>
+                <input
+                  type="number"
+                  formControlName="categoriesFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('categoriesFormControl')?.valid"
+                >
+                  Please enter a valid catregory (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Artists</mat-label>
+                <input
+                  type="number"
+                  formControlName="artistsFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('artistsFormControl')?.valid"
+                >
+                  Please enter a valid artist
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Game type</mat-label>
+                <input
+                  type="number"
+                  formControlName="emailFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="addProductForm.get('emailFormControl')?.valid"
+                >
+                  Please enter a valid game type
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Short Description</mat-label>
+                <input
+                  type="number"
+                  formControlName="shortDescriptionFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="
+                    addProductForm.get('shortDescriptionFormControl')?.valid
+                  "
+                >
+                  Please enter a valid short description (at least 3 character
+                  long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Long Description</mat-label>
+                <input
+                  type="number"
+                  formControlName="longDescriptionFormControl"
+                  matInput
+                />
+                <mat-error
+                  *ngIf="
+                    addProductForm.get('longDescriptionFormControl')?.valid
+                  "
+                >
+                  Please enter a valid game type (at least 3 character long)
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <div class="button-container">
+          <button
+            [disabled]="!addProductForm.valid"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Add product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@import "colors";
+
+.card {
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 5px 30px 1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 93.5%;
+}
+
+.add-icon ::ng-deep .material-icons {
+  cursor: pointer;
+  font-size: 15rem;
+  color: $grey2;
+}
