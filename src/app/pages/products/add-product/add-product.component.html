@@ -77,19 +77,11 @@
           </tr>
           <tr>
             <td>
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Picture</mat-label>
-                <input
-                  type="text"
-                  formControlName="imageFormControl"
-                  matInput
-                />
-                <mat-error
-                  *ngIf="addProductForm.get('imageFormControl')?.valid"
-                >
-                  Please enter a valid price
-                </mat-error>
-              </mat-form-field>
+              <ngx-awesome-uploader
+                [adapter]="adapter"
+                [fileMaxCount]="1"
+                (fileAdded)="imageAdded($event)"
+              ></ngx-awesome-uploader>
             </td>
           </tr>
           <tr>
@@ -259,11 +251,11 @@
                 <mat-label>Game type</mat-label>
                 <input
                   type="number"
-                  formControlName="emailFormControl"
+                  formControlName="typeOfGameFormControl"
                   matInput
                 />
                 <mat-error
-                  *ngIf="addProductForm.get('emailFormControl')?.valid"
+                  *ngIf="addProductForm.get('typeOfGameFormControl')?.valid"
                 >
                   Please enter a valid game type
                 </mat-error>
@@ -312,7 +304,7 @@
         </table>
         <div class="button-container">
           <button
-            [disabled]="!addProductForm.valid"
+            [disabled]="!addProductForm.valid || image === undefined"
             type="submit"
             mat-raised-button
             color="primary"

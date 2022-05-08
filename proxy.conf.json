@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://ther-rolling-road.free.beeceptor.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

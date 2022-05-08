@@ -15,14 +15,14 @@ export interface BoardGame {
   age: number;
   playingTimeLower: number;
   playingTimeUpper: number;
-  categories: string[];
+  categories: string;
   imageUrl: string;
-  languages: string[];
+  languages: string;
   shortDescription: string;
   longDescription?: string;
-  designers: string[];
-  artists: string[];
-  typeOfGame: string[];
+  designers: string;
+  artists: string;
+  typeOfGame: string;
   price: number;
   badge?: Badge;
 }

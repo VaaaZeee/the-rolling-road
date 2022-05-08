@@ -14,12 +14,14 @@ import { SignupModule } from './pages/signup/signup.module';
 import { environment } from 'src/environments/environment';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

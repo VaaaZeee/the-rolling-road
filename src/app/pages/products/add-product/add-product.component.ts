@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CustomFilePickerAdapter } from 'src/app/core/field-picker-adapter/custom-field-picker-adapter';
+import { BoardGame } from 'src/app/core/models/product.models';
 
 @Component({
   selector: 'app-add-product',
@@ -8,6 +11,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
+  public adapter: CustomFilePickerAdapter;
+  public image: File | undefined;
   addProductForm = new FormGroup({
     nameFormControl: new FormControl('', [
       Validators.required,
@@ -45,7 +50,6 @@ export class AddProductComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
     ]),
-    imageFormControl: new FormControl(null, [Validators.required]),
     languageFormControl: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -66,13 +70,47 @@ export class AddProductComponent implements OnInit {
       Validators.min(0),
     ]),
   });
-
-  constructor(public dialogRef: MatDialogRef<AddProductComponent>) {}
+  constructor(
+    private http: HttpClient,
+    public dialogRef: MatDialogRef<AddProductComponent>
+  ) {
+    this.adapter = new CustomFilePickerAdapter(this.http);
+  }
 
   ngOnInit() {}
 
+  fetchProduct(): BoardGame {
+    return {
+      id: '',
+      name: this.addProductForm.value.nameFormControl,
+      brand: this.addProductForm.value.brandFormControl,
+      inStock: this.addProductForm.value.inStockFormControl,
+      minPlayer: this.addProductForm.value.minPlayerFormControl,
+      maxPlayer: this.addProductForm.value.maxPlayerFormControl,
+      age: this.addProductForm.value.ageFormControl,
+      playingTimeLower: this.addProductForm.value.playingTimeLowerFormControl,
+      playingTimeUpper: this.addProductForm.value.playingTimeUpperFormControl,
+      categories: this.addProductForm.value.categoriesFormControl,
+      imageUrl: '',
+      languages: this.addProductForm.value.languageFormControl,
+      shortDescription: this.addProductForm.value.shortDescriptionFormControl,
+      longDescription: this.addProductForm.value.longDescriptionFormControl,
+      designers: this.addProductForm.value.designersFormControl,
+      artists: this.addProductForm.value.artistsFormControl,
+      typeOfGame: this.addProductForm.value.typeOfGameFormControl,
+      price: this.addProductForm.value.priceFormControl,
+    };
+  }
+
   addProduct(): void {
-    console.log(this.addProductForm.value);
+    if (this.addProductForm.valid && this.image) {
+      const product: BoardGame = this.fetchProduct();
+      console.log(product);
+    }
+  }
+
+  imageAdded(file: any): void {
+    this.image = file;
   }
 
   close(): void {

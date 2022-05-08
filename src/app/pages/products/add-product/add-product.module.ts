@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { IconModule } from 'src/app/shared/icon/icon.module';
 import { AddProductComponent } from './add-product.component';
+import { FilePickerModule } from 'ngx-awesome-uploader';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { AddProductComponent } from './add-product.component';
     MatButtonModule,
     MatDialogModule,
     IconModule,
+    FilePickerModule,
   ],
   declarations: [AddProductComponent],
   exports: [AddProductComponent],
