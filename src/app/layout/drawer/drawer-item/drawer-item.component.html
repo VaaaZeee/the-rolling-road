@@ -1,3 +1,23 @@
-<p>
-  drawer-item works!
-</p>
+<ng-container *ngIf="!menuItem?.disabled; else disabled">
+  <div
+    *ngIf="menuItem"
+    class="item"
+    [routerLink]="menuItem.url"
+    routerLinkActive="active"
+  >
+    <div class="item-title">
+      {{ menuItem.name }}
+    </div>
+  </div>
+</ng-container>
+<ng-template #disabled>
+  <div
+    *ngIf="menuItem"
+    class="item disabled"
+    [title]="'this item is currently disabled'"
+  >
+    <div class="item-title">
+      {{ menuItem.name }}
+    </div>
+  </div>
+</ng-template>

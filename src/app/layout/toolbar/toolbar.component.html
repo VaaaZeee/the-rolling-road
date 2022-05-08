@@ -1,14 +1,17 @@
 <mat-toolbar
-  ><span>The Rolling Road</span><span class="spacer"></span
+  ><span class="title">The Rolling Road</span><span class="spacer"></span
   ><span
     class="userName-label noselect"
     title="user edit is not implemented"
     *ngIf="userService.user$ | async as user"
     >{{ user.userName }}</span
-  ><app-icon
-    class="logout-icon"
-    *ngIf="authService.isLoggedIn"
-    (click)="logout()"
-    >logout</app-icon
-  ></mat-toolbar
->
+  >
+  <ng-container *ngIf="authService.isLoggedIn">
+    <app-icon
+      class="toolbar-icon basket-icon"
+      [routerLink]="['/basket']"
+      routerLinkActive="icon-active"
+      >shopping_cart</app-icon
+    ><app-icon class="toolbar-icon" (click)="logout()">logout</app-icon>
+  </ng-container>
+</mat-toolbar>

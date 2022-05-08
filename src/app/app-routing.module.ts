@@ -4,10 +4,27 @@ import { AuthGuard } from './core/guards/auth/auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full',
+  },
+  {
     path: 'home',
     canLoad: [AuthGuard],
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'basket',
+    canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/basket/basket.module').then((m) => m.BasketModule),
+  },
+  {
+    path: 'products',
+    canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/products/products.module').then((m) => m.ProductsModule),
   },
   {
     path: 'login',
@@ -20,9 +37,11 @@ const routes: Routes = [
       import('./pages/signup/signup.module').then((m) => m.SignupModule),
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: '**',
+    loadChildren: () =>
+      import('./pages/error-page/error-page.module').then(
+        (m) => m.ErrorPageModule
+      ),
   },
 ];
 @NgModule({

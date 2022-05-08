@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { SignupModule } from './pages/signup/signup.module';
 import { environment } from 'src/environments/environment';
 import { LayoutModule } from './layout/layout.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],

@@ -20,16 +20,33 @@ mat-toolbar {
   }
 }
 
-.logout-icon {
+.toolbar-icon {
   position: relative;
   top: 5px;
   transition: 0.3s;
+  margin-right: 1rem;
+
+  :last-child {
+    margin-right: 0rem;
+  }
 
   &:hover {
     color: $grey2;
   }
 }
 
+.basket-icon {
+  line-height: 1.5rem;
+  border-bottom: 3px rgba(255, 255, 255, 0) solid;
+}
+
+.icon-active {
+  border-bottom: 3px rgba(255, 255, 255, 0.5) solid;
+}
+
+.title {
+  font-size: 32px;
+}
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

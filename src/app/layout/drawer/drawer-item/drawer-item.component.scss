@@ -1,0 +1,33 @@
+@import "colors";
+.item {
+  display: flex;
+  height: 3rem;
+  width: 100%;
+  background-color: $drawerItemColor;
+  border-bottom: 1px solid $primaryColor;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transform: 0.3s;
+
+  &-title {
+    color: white;
+    font-size: 24px;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.disabled {
+  cursor: default;
+  background-color: $grey2;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.active {
+  background-color: $primaryColor;
+}

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuItem } from 'src/app/core/models/menu-item.model';
 
 @Component({
   selector: 'app-drawer-item',
@@ -6,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./drawer-item.component.scss'],
 })
 export class DrawerItemComponent implements OnInit {
-  @Input() public name: string | undefined;
+  @Input() public menuItem: MenuItem | undefined;
 
   constructor() {}
 

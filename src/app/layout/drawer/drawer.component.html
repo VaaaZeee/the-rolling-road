@@ -1,7 +1,11 @@
 <mat-drawer-container class="drawer-container">
-  <mat-drawer mode="side" [opened]="router.url === '/home'"
-    >Drawer content</mat-drawer
+  <mat-drawer
+    mode="side"
+    [opened]="router.url !== '/login' && router.url !== '/signup'"
   >
+    <app-drawer-item *ngFor="let menuItem of menuItems" [menuItem]="menuItem">
+    </app-drawer-item>
+  </mat-drawer>
   <mat-drawer-content>
     <ng-content></ng-content>
   </mat-drawer-content>

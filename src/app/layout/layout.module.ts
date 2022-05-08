@@ -7,9 +7,16 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { IconModule } from '../shared/icon/icon.module';
 import { DrawerItemComponent } from './drawer/drawer-item/drawer-item.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule, MatToolbarModule, MatSidenavModule, IconModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    IconModule,
+    RouterModule,
+  ],
   declarations: [
     LayoutComponent,
     ToolbarComponent,
