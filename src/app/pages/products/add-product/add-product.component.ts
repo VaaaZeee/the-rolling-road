@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CustomFilePickerAdapter } from 'src/app/core/field-picker-adapter/custom-field-picker-adapter';
 import { BoardGame } from 'src/app/core/models/product.models';
 
 @Component({
