@@ -16,7 +16,9 @@
       <p class="price">{{ product.price + " €" }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button class="add-to-cart" mat-button>ADD TO CART</button>
+      <button class="add-to-cart" mat-button (click)="addToCart()">
+        ADD TO CART
+      </button>
     </mat-card-actions>
   </mat-card>
 </ng-container>

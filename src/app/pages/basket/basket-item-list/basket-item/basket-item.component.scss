@@ -1,0 +1,28 @@
+@import "colors";
+.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.name {
+  font-size: 1.5rem;
+}
+
+.action-icon {
+  cursor: pointer;
+  position: relative;
+  color: $primaryColor;
+  transition: 0.5ms;
+  top: 2px;
+
+  &:hover {
+    color: $grey2;
+  }
+}
+
+.quantity-changer {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}

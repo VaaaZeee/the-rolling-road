@@ -111,8 +111,6 @@ export class EditProductComponent implements OnInit {
   editProduct(): void {
     if (this.editProductForm.valid) {
       const product: BoardGame = this.fetchProduct();
-      console.log(product);
-
       this.dialogRef.close(product);
     }
   }

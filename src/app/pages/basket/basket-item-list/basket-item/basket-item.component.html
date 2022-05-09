@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="image">
+    <img
+      [src]="basketItem?.product?.imageUrl"
+      alt="basketItem"
+      width="100px"
+      height="100px"
+    />
+  </div>
+  <div class="name">
+    {{ basketItem?.product?.name }}
+  </div>
+  <div class="quantity-changer">
+    <div>
+      <app-icon class="action-icon" (click)="decreaseQuantity()"
+        >remove</app-icon
+      >
+    </div>
+    <div class="name">{{ basketItem?.quantity }}</div>
+    <div>
+      <app-icon class="action-icon" (click)="increaseQuantity()">add</app-icon>
+    </div>
+  </div>
+</div>
+<hr />

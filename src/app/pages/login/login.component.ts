@@ -29,15 +29,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.authService
-      .login(
-        this.loginForm.value.emailFormControl,
-        this.loginForm.value.passwordFormControl
-      )
-      .then(() => {
-        this.loginForm.reset();
-        this.router.navigateByUrl('home');
-      });
+    this.authService.login(
+      this.loginForm.value.emailFormControl,
+      this.loginForm.value.passwordFormControl
+    );
   }
 
   navigateToSignUp() {

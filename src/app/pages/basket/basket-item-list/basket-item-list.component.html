@@ -1,0 +1,8 @@
+<ng-container *ngIf="user">
+  <div class="basket" *ngIf="basketItems$ | async as basketItems">
+    <app-basket-item
+      *ngFor="let basketItem of basketItems"
+      [basketItem]="basketItem"
+    ></app-basket-item>
+  </div>
+</ng-container>

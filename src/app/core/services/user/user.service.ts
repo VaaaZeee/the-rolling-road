@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map, Observable, of } from 'rxjs';
 import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user$ = new BehaviorSubject<User | undefined>(undefined);
-
-  constructor(public afs: AngularFirestore) {}
+  user$: Observable<User | undefined> = of(undefined);
+  private userId$ = new BehaviorSubject<string | undefined>(undefined);
+  constructor(public afs: AngularFirestore) {
+    this.userId$.subscribe((uid) => {
+      if (uid) {
+        this.user$ = this.afs
+          .collection('Users')
+          .doc(uid)
+          .valueChanges() as Observable<User>;
+      } else {
+        this.user$ = of(undefined);
+      }
+    });
+  }
 
   addUserToFireBase(user: User): Promise<void> {
     return this.afs
@@ -18,23 +29,12 @@ export class UserService {
       .set({ ...user, type: 'User' });
   }
 
-  fetchUserDataById(uid: string): Promise<User> {
-    return firstValueFrom(
-      this.afs
-        .collection('Users')
-        .doc(uid)
-        .get()
-        .pipe(
-          map((user) => {
-            const userData: User = user.data() as User;
-            this.user$.next(userData);
-            return userData;
-          })
-        )
-    );
+  fetchUserDataById(uid: string): Promise<string | undefined> {
+    this.userId$.next(uid);
+    return firstValueFrom(this.userId$.asObservable());
   }
 
   resetUser(): void {
-    this.user$.next(undefined);
+    this.userId$.next(undefined);
   }
 }

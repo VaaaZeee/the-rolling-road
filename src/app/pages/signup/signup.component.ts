@@ -48,6 +48,8 @@ export class SignupComponent implements OnInit {
       userName: this.signUpForm.value.userNameFormControl as string,
       firstName: this.signUpForm.value.firstNameFormControl as string,
       lastName: this.signUpForm.value.lastNameFormControl as string,
+      basket: [],
+      orders: [],
       type: 'User' as UserType,
     };
     const password: string = this.signUpForm.value.passwordFormControl;

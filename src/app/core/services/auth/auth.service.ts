@@ -18,10 +18,8 @@ export class AuthService {
       if (user) {
         this.userService.fetchUserDataById(user.uid);
         localStorage.setItem('user', JSON.stringify(user));
-        JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
       }
     });
   }
@@ -39,6 +37,9 @@ export class AuthService {
           return this.userService.fetchUserDataById(result.user.uid);
         }
         return undefined;
+      })
+      .then(() => {
+        this.router.navigateByUrl('products');
       })
       .catch((error) => {
         window.alert(error.message);

@@ -7,7 +7,7 @@ import { BoardGame } from '../../models/product.models';
   providedIn: 'root',
 })
 export class ProductService {
-  public products$: Observable<BoardGame[]> | undefined;
+  public products$: Observable<BoardGame[]>;
 
   constructor(private afStore: AngularFirestore) {
     this.products$ = this.afStore
@@ -23,5 +23,9 @@ export class ProductService {
 
   editProductInFireStore(product: BoardGame): void {
     this.afStore.collection('BoardGames').doc(product.id).set(product);
+  }
+
+  deleteProductById(id: string): void {
+    this.afStore.collection('BoardGames').doc(id).delete();
   }
 }
