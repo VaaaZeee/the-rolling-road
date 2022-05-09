@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
     const password: string = this.signUpForm.value.passwordFormControl;
     this.authService.signUp(user, password).then(() => {
       this.signUpForm.reset();
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/products');
     });
   }
 
