@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BoardGame } from 'src/app/core/models/product.models';
 import { BasketService } from 'src/app/core/services/basket/basket.service';
 import { ProductService } from 'src/app/core/services/product/product.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { EditProductComponent } from '../edit-product/edit-product.component';
@@ -17,7 +18,8 @@ export class ProductComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public productService: ProductService,
-    public basketService: BasketService
+    public basketService: BasketService,
+    public userService: UserService
   ) {}
 
   ngOnInit() {}

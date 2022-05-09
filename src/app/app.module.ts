@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeModule } from './pages/home/home.module';
 import { LoginModule } from './pages/login/login.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -13,7 +12,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { SignupModule } from './pages/signup/signup.module';
 import { environment } from 'src/environments/environment';
 import { LayoutModule } from './layout/layout.module';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -29,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     LayoutModule,
-    HomeModule,
     LoginModule,
     SignupModule,
   ],

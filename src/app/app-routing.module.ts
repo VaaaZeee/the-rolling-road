@@ -9,12 +9,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'home',
-    canLoad: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
-  },
-  {
     path: 'basket',
     canLoad: [AuthGuard],
     loadChildren: () =>

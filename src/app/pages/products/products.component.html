@@ -1,7 +1,9 @@
-<div class="container">
-  <app-product></app-product>
-  <app-product
-    *ngFor="let product of productService.products$ | async"
-    [product]="product"
-  ></app-product>
-</div>
+<ng-container *ngIf="userService.user$ | async as user">
+  <div class="container">
+    <app-product *ngIf="user.type == 'Admin'"></app-product>
+    <app-product
+      *ngFor="let product of productService.products$ | async"
+      [product]="product"
+    ></app-product>
+  </div>
+</ng-container>

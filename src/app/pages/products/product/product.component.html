@@ -1,43 +1,46 @@
-<ng-container *ngIf="product; else addProductTemplate">
-  <mat-card class="card">
-    <mat-card-header>
-      <mat-card-title>{{ product.name }}</mat-card-title>
-      <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      >
-        <app-icon>more_vert</app-icon>
-      </button>
-    </mat-card-header>
-    <img mat-card-image [src]="product.imageUrl" alt="Photo of the product" />
-    <mat-card-content>
-      <p class="price">{{ product.price + " €" }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button class="add-to-cart" mat-button (click)="addToCart()">
-        ADD TO CART
-      </button>
-    </mat-card-actions>
-  </mat-card>
+<ng-container *ngIf="userService.user$ | async as user">
+  <ng-container *ngIf="product; else addProductTemplate">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+        <button
+          *ngIf="user.type == 'Admin'"
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <app-icon>more_vert</app-icon>
+        </button>
+      </mat-card-header>
+      <img mat-card-image [src]="product.imageUrl" alt="Photo of the product" />
+      <mat-card-content>
+        <p class="price">{{ product.price + " €" }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="add-to-cart" mat-button (click)="addToCart()">
+          ADD TO CART
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #addProductTemplate>
+    <mat-card class="add card" (click)="addProduct()">
+      <mat-card-content>
+        <app-icon class="add-icon">add</app-icon>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openEditDialog()">
+      <app-icon>edit</app-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item (click)="openDeleteDialog()">
+      <app-icon>delete</app-icon>
+      <span>Delete</span>
+    </button>
+  </mat-menu>
 </ng-container>
-
-<ng-template #addProductTemplate>
-  <mat-card class="add card" (click)="addProduct()">
-    <mat-card-content>
-      <app-icon class="add-icon">add</app-icon>
-    </mat-card-content>
-  </mat-card>
-</ng-template>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="openEditDialog()">
-    <app-icon>edit</app-icon>
-    <span>Edit</span>
-  </button>
-  <button mat-menu-item (click)="openDeleteDialog()">
-    <app-icon>delete</app-icon>
-    <span>Delete</span>
-  </button>
-</mat-menu>
