@@ -5,9 +5,10 @@ import { BasketRoutingModule } from './basket-routing.module';
 import { BasketItemListComponent } from './basket-item-list/basket-item-list.component';
 import { BasketItemComponent } from './basket-item-list/basket-item/basket-item.component';
 import { IconModule } from 'src/app/shared/icon/icon.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  imports: [CommonModule, BasketRoutingModule, IconModule],
+  imports: [CommonModule, BasketRoutingModule, IconModule, MatButtonModule],
   declarations: [BasketComponent, BasketItemListComponent, BasketItemComponent],
 })
 export class BasketModule {}

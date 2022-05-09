@@ -10,5 +10,14 @@
       [user]="data.user"
       [products]="data.products"
     ></app-basket-item-list>
+    <button
+      type="submit"
+      mat-raised-button
+      class="order-button"
+      color="primary"
+      (click)="order()"
+    >
+      Order
+    </button>
   </ng-container>
 </div>

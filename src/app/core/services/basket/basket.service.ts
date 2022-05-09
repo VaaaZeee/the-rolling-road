@@ -4,6 +4,7 @@ import { UserService } from '../user/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Order } from '../../models/order.model';
 import { BoardGame } from '../../models/product.models';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,11 @@ import { BoardGame } from '../../models/product.models';
 export class BasketService {
   public basket$: Observable<string[] | undefined>;
   public orders$: Observable<Order[] | undefined>;
-  constructor(private userService: UserService, private afs: AngularFirestore) {
+  constructor(
+    private userService: UserService,
+    private afs: AngularFirestore,
+    private router: Router
+  ) {
     this.basket$ = this.userService.user$.pipe(
       distinctUntilChanged(),
       map((user) => {
@@ -79,7 +84,19 @@ export class BasketService {
               basket: user.basket,
               date: new Date(),
             };
-            this.afs.collection('Users').doc(user.uid).update({ order });
+            this.afs
+              .collection('Users')
+              .doc(user.uid)
+              .update({ order })
+              .then(() =>
+                this.afs
+                  .collection('Users')
+                  .doc(user.uid)
+                  .update({ basket: [] })
+              )
+              .then(() => {
+                this.router.navigateByUrl('products');
+              });
           }
         })
       )

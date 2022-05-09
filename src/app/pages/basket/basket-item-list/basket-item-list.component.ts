@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BasketItem } from 'src/app/core/models/basket.model';
 import { BoardGame } from 'src/app/core/models/product.models';
 import { User } from 'src/app/core/models/user.model';
+import { BasketService } from 'src/app/core/services/basket/basket.service';
 
 @Component({
   selector: 'app-basket-item-list',
